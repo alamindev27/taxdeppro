@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 
 <head>
     <meta charset="UTF-8">
@@ -10,6 +10,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800&display=swap"
         rel="stylesheet">
+
+    <link rel="icon" type="image/png"
+        href="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a6f1fa4188345b27ef47f79.png">
+    <link rel="apple-touch-icon"
+        href="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a6f1fa4188345b27ef47f79.png">
     <script>
         tailwind.config = {
             theme: {
@@ -33,6 +38,12 @@
         }
     </script>
     <style>
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden !important;
+        }
+
         .gold-gradient {
             background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
         }
@@ -50,7 +61,7 @@
     </style>
 </head>
 
-<body class="bg-slate-950 text-slate-100 font-sans antialiased overflow-x-hidden">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased overflow-x-hidden w-full">
 
     <!-- FIXED SOLID HEADER -->
     <header id="main-header"
@@ -83,11 +94,11 @@
                     </a>
                 </div>
 
-                <!-- Upgraded Executive Mobile Drawer Toggle Button -->
+                <!-- Mobile Menu Button (Border Completely Removed) -->
                 <button id="drawer-toggle-btn" type="button"
-                    class="lg:hidden text-amber-400 bg-emerald-950/80 p-2.5 rounded-xl hover:bg-amber-400 hover:text-slate-950 focus:outline-none border border-amber-500/40 transition-all flex items-center justify-center shadow-lg"
+                    class="lg:hidden text-amber-400 bg-transparent p-2 focus:outline-none transition-all flex items-center justify-center"
                     aria-label="Open Sidebar Menu">
-                    <i class="fa-solid fa-bars-staggered text-xl"></i>
+                    <i class="fa-solid fa-bars-staggered text-2xl"></i>
                 </button>
             </div>
         </div>
@@ -540,7 +551,7 @@
         </div>
     </section>
 
-    <!-- REDESIGNED EXECUTIVE TEAM SECTION (4-Column Modern Card Grid) -->
+    <!-- OUR TEAM SECTION (CIRCULAR AVATARS + READ MORE MODAL POPUP) -->
     <section id="team" class="py-20 bg-[#081c12] border-t border-emerald-900/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -553,125 +564,113 @@
                     of engineering, commercial real estate, and tax strategy expertise.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Executive 1: Mark Prideaux -->
+            <!-- 4 Column Grid for Team Members -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Member 1: Mark Prideaux -->
                 <div
-                    class="bg-gradient-to-b from-[#0b2216] to-[#123524] rounded-3xl border border-emerald-800/50 overflow-hidden shadow-2xl hover:border-amber-400 transition-all hover:-translate-y-2 flex flex-col justify-between group">
-                    <div class="relative h-72 overflow-hidden">
+                    class="bg-gradient-to-b from-[#0b2216] to-[#123524] rounded-3xl border border-emerald-800/50 p-6 shadow-2xl flex flex-col items-center text-center space-y-4 hover:border-amber-400 transition-all hover:-translate-y-1.5 group">
+                    <div
+                        class="w-28 h-28 rounded-full overflow-hidden border-4 border-amber-500/40 shadow-xl shrink-0 group-hover:scale-105 transition-transform duration-300">
                         <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a4d01fd55edb24b90be4d05.png"
-                            alt="Mark Prideaux"
-                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0b2216] via-transparent to-transparent">
-                        </div>
-                        <span
-                            class="absolute bottom-3 left-4 bg-amber-500/20 backdrop-blur-md text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded-md border border-amber-500/30">20+
-                            Yrs Exp</span>
+                            alt="Mark Prideaux" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <div>
-                            <h3 class="text-xl font-extrabold text-white group-hover:text-amber-400 transition-colors">
-                                Mark Prideaux</h3>
-                            <p class="text-xs font-semibold text-amber-400/90 uppercase tracking-wider mt-1">President &
-                                Senior Cost Segregation Engineer</p>
-                            <p class="text-xs text-slate-300 leading-relaxed mt-3 line-clamp-6">
-                                Mark Prideaux has been performing cost segregation studies for more than 20 years,
-                                bringing a rare combination of cost segregation, construction, real estate, investment
-                                property, and brokerage experience to TaxDepPro. He owned an award-winning construction
-                                firm for 14 years and managed over $166M in real estate transactions.
-                            </p>
-                        </div>
+                    <div class="space-y-1">
+                        <h3 class="text-xl font-extrabold text-white group-hover:text-amber-400 transition-colors">Mark
+                            Prideaux</h3>
+                        <p class="text-xs font-semibold text-amber-400 uppercase tracking-wider">President & Senior Cost
+                            Segregation Engineer</p>
                     </div>
+                    <button onclick="openTeamModal('mark')"
+                        class="mt-2 text-xs font-bold text-amber-400 hover:text-white uppercase tracking-wider flex items-center space-x-1 transition-colors">
+                        <span>Read Bio</span> <i class="fa-solid fa-circle-plus"></i>
+                    </button>
                 </div>
 
-                <!-- Executive 2: Hank Tippins -->
+                <!-- Member 2: Hank Tippins -->
                 <div
-                    class="bg-gradient-to-b from-[#0b2216] to-[#123524] rounded-3xl border border-emerald-800/50 overflow-hidden shadow-2xl hover:border-amber-400 transition-all hover:-translate-y-2 flex flex-col justify-between group">
-                    <div class="relative h-72 overflow-hidden">
+                    class="bg-gradient-to-b from-[#0b2216] to-[#123524] rounded-3xl border border-emerald-800/50 p-6 shadow-2xl flex flex-col items-center text-center space-y-4 hover:border-amber-400 transition-all hover:-translate-y-1.5 group">
+                    <div
+                        class="w-28 h-28 rounded-full overflow-hidden border-4 border-amber-500/40 shadow-xl shrink-0 group-hover:scale-105 transition-transform duration-300">
                         <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a4d01fdb7dbcd414923af31.jpg"
-                            alt="Hank Tippins"
-                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0b2216] via-transparent to-transparent">
-                        </div>
-                        <span
-                            class="absolute bottom-3 left-4 bg-amber-500/20 backdrop-blur-md text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded-md border border-amber-500/30">Chief
-                            Engineer</span>
+                            alt="Hank Tippins" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <div>
-                            <h3 class="text-xl font-extrabold text-white group-hover:text-amber-400 transition-colors">
-                                Hank Tippins</h3>
-                            <p class="text-xs font-semibold text-amber-400/90 uppercase tracking-wider mt-1">Chief
-                                Engineer</p>
-                            <p class="text-xs text-slate-300 leading-relaxed mt-3 line-clamp-6">
-                                Hank Tippins holds a Bachelor's in Mechanical Engineering and a Master's in Industrial
-                                Engineering. Investing in real estate since age 21, Hank combines deep engineering
-                                precision with investor practical insight, having partnered with national cost
-                                segregation firms and co-founded FreedomSoft.
-                            </p>
-                        </div>
+                    <div class="space-y-1">
+                        <h3 class="text-xl font-extrabold text-white group-hover:text-amber-400 transition-colors">Hank
+                            Tippins</h3>
+                        <p class="text-xs font-semibold text-amber-400 uppercase tracking-wider">Chief Engineer</p>
                     </div>
+                    <button onclick="openTeamModal('hank')"
+                        class="mt-2 text-xs font-bold text-amber-400 hover:text-white uppercase tracking-wider flex items-center space-x-1 transition-colors">
+                        <span>Read Bio</span> <i class="fa-solid fa-circle-plus"></i>
+                    </button>
                 </div>
 
-                <!-- Executive 3: Alessandra Tippins -->
+                <!-- Member 3: Alessandra Tippins -->
                 <div
-                    class="bg-gradient-to-b from-[#0b2216] to-[#123524] rounded-3xl border border-emerald-800/50 overflow-hidden shadow-2xl hover:border-amber-400 transition-all hover:-translate-y-2 flex flex-col justify-between group">
-                    <div class="relative h-72 overflow-hidden">
+                    class="bg-gradient-to-b from-[#0b2216] to-[#123524] rounded-3xl border border-emerald-800/50 p-6 shadow-2xl flex flex-col items-center text-center space-y-4 hover:border-amber-400 transition-all hover:-translate-y-1.5 group">
+                    <div
+                        class="w-28 h-28 rounded-full overflow-hidden border-4 border-amber-500/40 shadow-xl shrink-0 group-hover:scale-105 transition-transform duration-300">
                         <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a4d01fd2d9cf80515ea00b5.png"
-                            alt="Alessandra Tippins"
-                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0b2216] via-transparent to-transparent">
-                        </div>
-                        <span
-                            class="absolute bottom-3 left-4 bg-amber-500/20 backdrop-blur-md text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded-md border border-amber-500/30">Operations</span>
+                            alt="Alessandra Tippins" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <div>
-                            <h3 class="text-xl font-extrabold text-white group-hover:text-amber-400 transition-colors">
-                                Alessandra Tippins</h3>
-                            <p class="text-xs font-semibold text-amber-400/90 uppercase tracking-wider mt-1">Creative
-                                Operations Specialist</p>
-                            <p class="text-xs text-slate-300 leading-relaxed mt-3 line-clamp-6">
-                                Alessandra Tippins oversees marketing, visual assets, and creative operations. Her work
-                                ensures complex cost segregation engineering concepts are communicated clearly to
-                                property owners, investors, and CPAs with ultimate precision and operational
-                                consistency.
-                            </p>
-                        </div>
+                    <div class="space-y-1">
+                        <h3 class="text-xl font-extrabold text-white group-hover:text-amber-400 transition-colors">
+                            Alessandra Tippins</h3>
+                        <p class="text-xs font-semibold text-amber-400 uppercase tracking-wider">Creative Operations
+                            Specialist</p>
                     </div>
+                    <button onclick="openTeamModal('alessandra')"
+                        class="mt-2 text-xs font-bold text-amber-400 hover:text-white uppercase tracking-wider flex items-center space-x-1 transition-colors">
+                        <span>Read Bio</span> <i class="fa-solid fa-circle-plus"></i>
+                    </button>
                 </div>
 
-                <!-- Executive 4: David Simmons -->
+                <!-- Member 4: David Simmons -->
                 <div
-                    class="bg-gradient-to-b from-[#0b2216] to-[#123524] rounded-3xl border border-emerald-800/50 overflow-hidden shadow-2xl hover:border-amber-400 transition-all hover:-translate-y-2 flex flex-col justify-between group">
-                    <div class="relative h-72 overflow-hidden">
+                    class="bg-gradient-to-b from-[#0b2216] to-[#123524] rounded-3xl border border-emerald-800/50 p-6 shadow-2xl flex flex-col items-center text-center space-y-4 hover:border-amber-400 transition-all hover:-translate-y-1.5 group">
+                    <div
+                        class="w-28 h-28 rounded-full overflow-hidden border-4 border-amber-500/40 shadow-xl shrink-0 group-hover:scale-105 transition-transform duration-300">
                         <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a679c039eb8e1b1cc2bbaf5.jpg"
-                            alt="David Simmons"
-                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0b2216] via-transparent to-transparent">
-                        </div>
-                        <span
-                            class="absolute bottom-3 left-4 bg-amber-500/20 backdrop-blur-md text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded-md border border-amber-500/30">Strategy</span>
+                            alt="David Simmons" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-                        <div>
-                            <h3 class="text-xl font-extrabold text-white group-hover:text-amber-400 transition-colors">
-                                David Simmons</h3>
-                            <p class="text-xs font-semibold text-amber-400/90 uppercase tracking-wider mt-1">Sr.
-                                Director of Development Strategy</p>
-                            <p class="text-xs text-slate-300 leading-relaxed mt-3 line-clamp-6">
-                                David Simmons specializes in integrating cost segregation strategies into new
-                                construction, acquisitions, and major renovations. Founder of StrataX Development and
-                                Silverback Capital, David holds an Int'l Business degree and oversaw 136 residential
-                                development units.
-                            </p>
-                        </div>
+                    <div class="space-y-1">
+                        <h3 class="text-xl font-extrabold text-white group-hover:text-amber-400 transition-colors">David
+                            Simmons</h3>
+                        <p class="text-xs font-semibold text-amber-400 uppercase tracking-wider">Sr. Director of
+                            Development Strategy</p>
                     </div>
+                    <button onclick="openTeamModal('david')"
+                        class="mt-2 text-xs font-bold text-amber-400 hover:text-white uppercase tracking-wider flex items-center space-x-1 transition-colors">
+                        <span>Read Bio</span> <i class="fa-solid fa-circle-plus"></i>
+                    </button>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- BLOG SECTION WITH CARDS & IMAGES -->
+    <!-- TEAM BIOGRAPHY MODAL POPUP -->
+    <div id="team-modal"
+        class="fixed inset-0 z-50 bg-slate-950/90 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+        <div
+            class="bg-[#0b2216] border border-amber-500/40 max-w-2xl w-full rounded-3xl p-6 sm:p-8 relative shadow-2xl space-y-6 max-h-[85vh] overflow-y-auto">
+            <button onclick="closeTeamModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center space-x-4 border-b border-emerald-800/60 pb-4">
+                <img id="team-modal-avatar" src="" alt="Team Member"
+                    class="w-20 h-20 rounded-full border-2 border-amber-400 object-cover">
+                <div>
+                    <h3 id="team-modal-name" class="text-2xl font-bold text-white"></h3>
+                    <p id="team-modal-role" class="text-xs font-bold text-amber-400 uppercase tracking-wider mt-1"></p>
+                </div>
+            </div>
+            <div id="team-modal-bio" class="text-xs sm:text-sm text-slate-300 leading-relaxed space-y-3"></div>
+        </div>
+    </div>
+
+    <!-- BLOG SECTION -->
     <section id="blog" class="py-20 bg-[#0b2216] border-t border-emerald-900/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -761,7 +760,7 @@
         </div>
     </section>
 
-    <!-- UPGRADED AUTO-SLIDING MULTI-CARD CLIENT REVIEWS SECTION -->
+    <!-- CLIENT REVIEWS SECTION -->
     <section id="reviews" class="py-20 bg-[#081c12] border-t border-emerald-900/30 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -772,7 +771,6 @@
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Trusted Nationwide By CPAs & Investors</h2>
             </div>
 
-            <!-- Responsive Multi-Card Auto Slider -->
             <div id="reviews-carousel-container" class="relative">
                 <div class="overflow-hidden">
                     <div id="reviews-slider-track" class="flex transition-transform duration-700 ease-in-out gap-6">
@@ -845,30 +843,6 @@
                                 <div>
                                     <h4 class="font-bold text-white text-sm">Michael T.</h4>
                                     <p class="text-xs text-amber-400/90">Multi-Family Operator</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Review Card 4 -->
-                        <div
-                            class="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 bg-[#0b2216] border border-emerald-800/40 rounded-3xl p-6 sm:p-8 shadow-2xl flex flex-col justify-between space-y-6">
-                            <div class="space-y-3">
-                                <div class="text-amber-400 text-sm flex gap-1">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                        class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="text-slate-200 text-sm italic leading-relaxed">"Working with David and Hank
-                                    made the cost segregation seamless for our retail center acquisition. We saved over
-                                    $350k in cash flow during year 1."</p>
-                            </div>
-                            <div class="border-t border-emerald-900/50 pt-4 flex items-center space-x-3">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm border border-amber-500/30">
-                                    SK</div>
-                                <div>
-                                    <h4 class="font-bold text-white text-sm">Steve K.</h4>
-                                    <p class="text-xs text-amber-400/90">Retail Portfolio Manager</p>
                                 </div>
                             </div>
                         </div>
@@ -970,6 +944,66 @@
 
     <!-- SCRIPTS -->
     <script>
+        // Team Biographies Data
+        const teamData = {
+            mark: {
+                name: "Mark Prideaux",
+                role: "President & Senior Cost Segregation Engineer",
+                avatar: "https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a4d01fd55edb24b90be4d05.png",
+                bio: `Mark Prideaux has been performing cost segregation studies for more than 20 years, bringing a rare combination of cost segregation, construction, real estate, investment property, and brokerage experience to the work behind TaxDepPro.
+                <br><br>Before and during his cost segregation career, Mark built a broad foundation in real estate and construction. His background includes owning an award-winning construction company for 14 years, working as a general contractor on new homes and major additions, performing estimating and sales for residential and commercial contractors, and completing extensive investment property renovation over the years.
+                <br><br>Mark also brings deep real estate experience. He has more than 26 years of residential and commercial real estate sales experience, has been involved in more than $166 million in real estate transactions, and previously served as a commercial real estate broker with Marcus & Millichap. He is also an investment property owner himself, giving him practical insight into the needs of landlords, investors, and property owners.`
+            },
+            hank: {
+                name: "Hank Tippins",
+                role: "Chief Engineer",
+                avatar: "https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a4d01fdb7dbcd414923af31.jpg",
+                bio: `Hank Tippins serves as Chief Engineer for TaxDepPro, bringing a strong technical foundation in engineering, real estate, cost segregation, and investment property ownership.
+                <br><br>Hank holds a Bachelor's degree in Mechanical Engineering and a Master's degree in Industrial Engineering. This background gives him a disciplined, analytical approach to evaluating buildings, construction systems, property components, and depreciation opportunities.
+                <br><br>Hank began investing in real estate at age 21. Since then, he has owned and managed various investment properties. He understands the importance of cash flow, depreciation, long-term value, and practical tax planning from the investor's side of the table—not just from a technical perspective.
+                <br><br>In 2006 Hank began working in the retail and grocery division of BSW, an architectural and engineering firm, where he forged a strategic partnership with The Cost Segregation Group, a major national cost segregation firm. Hank was also a founding member of FreedomSoft, a widely used real estate software platform.`
+            },
+            alessandra: {
+                name: "Alessandra Tippins",
+                role: "Creative Operations Specialist",
+                avatar: "https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a4d01fd2d9cf80515ea00b5.png",
+                bio: `Alessandra Tippins plays an integral role in supporting the marketing, digital communications, and creative operations behind TaxDepPro.
+                <br><br>Her work helps ensure that TaxDepPro presents complex cost segregation concepts in a way that is clear, professional, and easy for property owners, investors, and tax professionals to understand.
+                <br><br>As Creative Operations Specialist, Alessandra supports website updates, coordinates educational content, assists with digital marketing initiatives, and helps create visual assets that communicate the value of engineering-based cost segregation studies.
+                <br><br>Alessandra brings experience in operations, customer service, and financial technology, giving her a practical understanding of how systems, communication, and client support work together to deliver a smoother client experience.`
+            },
+            david: {
+                name: "David Simmons",
+                role: "Senior Director of Cost Segregation & Development Strategy",
+                avatar: "https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a679c039eb8e1b1cc2bbaf5.jpg",
+                bio: `David Simmons serves as Senior Director of Cost Segregation and Development Strategy for TaxDepPro. He specializes in helping property owners, developers, investors, and project teams integrate cost segregation considerations into new construction, design-build, commercial acquisition, renovation, and capital improvement strategies.
+                <br><br>David brings substantial hands-on experience in real estate development, construction oversight, investment structuring, and project execution.
+                <br><br>As the founder and CEO of StrataX Development and Silverback Capital, David has led vertically integrated real estate projects involving value-add acquisitions, major renovations, accessory dwelling unit expansions, condominium mapping, and ground-up construction. He has overseen the construction of 136 new residential units, including 112 homes built within a three-year period, along with a subdivision development in Sacramento.
+                <br><br>David holds a Bachelor's degree in International Business from the University of Portland and brings a disciplined, systems-driven approach to development strategy, capital deployment, project risk, and operational performance.`
+            }
+        };
+
+        function openTeamModal(key) {
+            const data = teamData[key];
+            if (data) {
+                document.getElementById('team-modal-name').textContent = data.name;
+                document.getElementById('team-modal-role').textContent = data.role;
+                document.getElementById('team-modal-avatar').src = data.avatar;
+                document.getElementById('team-modal-bio').innerHTML = data.bio;
+                const modal = document.getElementById('team-modal');
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            }
+        }
+
+        function closeTeamModal() {
+            const modal = document.getElementById('team-modal');
+            if (modal) {
+                modal.classList.add('opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+        }
+
         // 1. Dynamic Year
         const yearEl = document.getElementById('year');
         if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -1093,7 +1127,7 @@
             if (currentSlideIndex < 0) currentSlideIndex = totalSteps - 1;
 
             const cardWidth = sliderTrack.children[0].getBoundingClientRect().width;
-            const gap = 24; // 1.5rem (gap-6)
+            const gap = 24;
             const moveAmount = (cardWidth + gap) * currentSlideIndex;
             sliderTrack.style.transform = `translateX(-${moveAmount}px)`;
             buildDots();
