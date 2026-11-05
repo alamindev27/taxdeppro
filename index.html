@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxDepPro | Engineering-Based Cost Segregation Experts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#081c12',
+                            deep: '#0b2216',
+                            green: '#123524',
+                            light: '#1e4833',
+                            gold: '#D4AF37',
+                            amber: '#f59e0b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Cinzel', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+        }
+
+        .gold-text {
+            background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .grid-pattern {
+            background-image: radial-gradient(rgba(212, 175, 55, 0.12) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-950 text-slate-100 font-sans antialiased overflow-x-hidden">
+
+    <!-- FIXED SOLID HEADER (No white gap, no unwanted color-shift) -->
+    <header id="main-header"
+        class="fixed top-0 left-0 w-full z-50 bg-[#0b2216] border-b border-[#D4AF37]/30 shadow-2xl transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center group">
+                    <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a6f238832db2dd157e40fd3.png"
+                        alt="TaxDepPro Logo"
+                        class="h-10 sm:h-12 w-auto max-w-[180px] sm:max-w-[220px] object-contain group-hover:scale-105 transition-transform duration-300">
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center space-x-7 font-semibold text-slate-200 text-sm">
+                    <a href="#about" class="hover:text-amber-400 transition-colors">Why TaxDepPro</a>
+                    <a href="#delivers" class="hover:text-amber-400 transition-colors">What We Deliver</a>
+                    <a href="#case-studies" class="hover:text-amber-400 transition-colors">Case Studies</a>
+                    <a href="#team" class="hover:text-amber-400 transition-colors">Our Team</a>
+                    <a href="#blog" class="hover:text-amber-400 transition-colors">Blog</a>
+                    <a href="#reviews" class="hover:text-amber-400 transition-colors">Reviews</a>
+                    <a href="#faq" class="hover:text-amber-400 transition-colors">FAQ</a>
+                </nav>
+
+                <!-- Desktop CTA -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="#estimate-form"
+                        class="gold-gradient text-slate-950 font-extrabold px-5 py-2.5 rounded-xl shadow-lg shadow-amber-500/20 hover:scale-105 transition-all text-xs uppercase tracking-wider flex items-center">
+                        <i class="fa-solid fa-calculator mr-2"></i> Free Benefit Estimate
+                    </a>
+                </div>
+
+                <!-- Mobile Drawer Toggle Button -->
+                <button id="drawer-toggle-btn" type="button"
+                    class="lg:hidden text-slate-100 p-2 rounded-lg hover:bg-emerald-900/50 focus:outline-none border border-emerald-800"
+                    aria-label="Open Sidebar Menu">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE NAVIGATION SIDEBAR DRAWER -->
+    <div id="drawer-backdrop"
+        class="fixed inset-0 bg-slate-950/80 z-50 hidden opacity-0 transition-opacity duration-300"></div>
+    <aside id="sidebar-drawer"
+        class="fixed top-0 right-0 z-50 w-80 max-w-[85vw] h-full bg-[#081c12] border-l border-[#D4AF37]/30 shadow-2xl translate-x-full flex flex-col justify-between p-6 transition-transform duration-300">
+        <div>
+            <div class="flex items-center justify-between pb-6 border-b border-emerald-900/50">
+                <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a6f238832db2dd157e40fd3.png"
+                    alt="TaxDepPro Logo" class="h-9 w-auto">
+                <button id="drawer-close-btn" class="p-2 text-slate-400 hover:text-white focus:outline-none">
+                    <i class="fa-solid fa-xmark text-2xl"></i>
+                </button>
+            </div>
+            <nav class="mt-6 flex flex-col space-y-4 font-semibold text-slate-200">
+                <a href="#about" class="drawer-link py-2 hover:text-amber-400 transition-colors">Why TaxDepPro</a>
+                <a href="#delivers" class="drawer-link py-2 hover:text-amber-400 transition-colors">What We Deliver</a>
+                <a href="#case-studies" class="drawer-link py-2 hover:text-amber-400 transition-colors">Case Studies</a>
+                <a href="#team" class="drawer-link py-2 hover:text-amber-400 transition-colors">Our Team</a>
+                <a href="#blog" class="drawer-link py-2 hover:text-amber-400 transition-colors">Blog & Insights</a>
+                <a href="#reviews" class="drawer-link py-2 hover:text-amber-400 transition-colors">Client Reviews</a>
+                <a href="#faq" class="drawer-link py-2 hover:text-amber-400 transition-colors">FAQ</a>
+                <a href="#estimate-form"
+                    class="drawer-link gold-gradient text-slate-950 font-bold py-3 text-center rounded-xl shadow-md uppercase text-xs tracking-wider mt-4">
+                    Get Free Estimate
+                </a>
+            </nav>
+        </div>
+        <div class="pt-6 border-t border-emerald-900/50">
+            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Connect With Us</p>
+            <div class="flex space-x-4 text-amber-400 text-lg">
+                <a href="https://linkedin.com" target="_blank"
+                    class="w-10 h-10 rounded-full bg-emerald-900/40 border border-emerald-700/50 flex items-center justify-center hover:bg-amber-400 hover:text-slate-950 transition-colors"><i
+                        class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://facebook.com" target="_blank"
+                    class="w-10 h-10 rounded-full bg-emerald-900/40 border border-emerald-700/50 flex items-center justify-center hover:bg-amber-400 hover:text-slate-950 transition-colors"><i
+                        class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://twitter.com" target="_blank"
+                    class="w-10 h-10 rounded-full bg-emerald-900/40 border border-emerald-700/50 flex items-center justify-center hover:bg-amber-400 hover:text-slate-950 transition-colors"><i
+                        class="fa-brands fa-x-twitter"></i></a>
+                <a href="mailto:info@taxdeppro.com"
+                    class="w-10 h-10 rounded-full bg-emerald-900/40 border border-emerald-700/50 flex items-center justify-center hover:bg-amber-400 hover:text-slate-950 transition-colors"><i
+                        class="fa-solid fa-envelope"></i></a>
+            </div>
+            <p class="text-[11px] text-slate-500 mt-4">&copy; TaxDepPro. All Rights Reserved.</p>
+        </div>
+    </aside>
+
+    <!-- HERO SECTION (pt-28 applied so it flows underneath header naturally) -->
+    <section class="pt-28 pb-16 sm:pt-36 sm:pb-24 bg-[#0b2216] relative overflow-hidden grid-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <span
+                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase tracking-widest">
+                        <i class="fa-solid fa-shield-halved"></i> Engineering-Based Cost Segregation Experts
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                        Unlock Massive Cash Flow from Your <span class="gold-text">Real Estate Assets</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+                        Significantly accelerate depreciation deductions, reduce current income taxes, and increase
+                        immediate cash flow with IRS-compliant, engineering-backed cost segregation studies.
+                    </p>
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <a href="#estimate-form"
+                            class="gold-gradient text-slate-950 font-extrabold px-8 py-4 rounded-xl shadow-xl shadow-amber-500/20 hover:scale-105 transition-all text-sm uppercase tracking-wider flex items-center">
+                            Request Free Benefit Estimate <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- HERO ESTIMATE FORM -->
+                <div id="estimate-form" class="lg:col-span-5">
+                    <div
+                        class="bg-white text-slate-900 p-6 sm:p-8 rounded-3xl shadow-2xl border-4 border-[#D4AF37]/40 relative">
+                        <div
+                            class="absolute -top-4 right-6 bg-amber-500 text-slate-950 text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">
+                            No Risk Estimate
+                        </div>
+                        <h3 class="text-2xl font-bold mb-1">Free Tax Savings Estimate</h3>
+                        <p class="text-xs text-slate-500 mb-6">Find out how much cash tax savings your property
+                            qualifies for.</p>
+
+                        <form class="space-y-4"
+                            onsubmit="event.preventDefault(); alert('Estimate request submitted successfully!');">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name</label>
+                                <input type="text" placeholder="John Doe"
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-amber-500 text-slate-900">
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email</label>
+                                    <input type="email" placeholder="john@example.com"
+                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-amber-500 text-slate-900">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone</label>
+                                    <input type="tel" placeholder="(555) 000-0000"
+                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-amber-500 text-slate-900">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Property
+                                    Value</label>
+                                <select
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-amber-500 text-slate-900">
+                                    <option>$500,000 - $1,000,000</option>
+                                    <option>$1,000,000 - $5,000,000</option>
+                                    <option>$5,000,000+</option>
+                                </select>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-[#123524] hover:bg-[#1e4833] text-amber-400 font-extrabold py-3.5 rounded-xl uppercase tracking-wider text-xs shadow-lg transition-all border border-amber-500/30">
+                                Calculate Potential Savings
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUNTER-UP NUMERICAL STATS SECTION -->
+    <section class="py-12 bg-[#081c12] border-y border-emerald-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+                <div class="p-4">
+                    <p class="text-3xl sm:text-4xl font-extrabold gold-text mb-1">$<span class="counter"
+                            data-target="1.2" data-decimals="1">0</span>B+</p>
+                    <p class="text-xs uppercase font-bold text-slate-400 tracking-wider">Tax Basis Analyzed</p>
+                </div>
+                <div class="p-4">
+                    <p class="text-3xl sm:text-4xl font-extrabold gold-text mb-1"><span class="counter"
+                            data-target="2300" data-decimals="0">0</span>+</p>
+                    <p class="text-xs uppercase font-bold text-slate-400 tracking-wider">Studies Completed</p>
+                </div>
+                <div class="p-4">
+                    <p class="text-3xl sm:text-4xl font-extrabold gold-text mb-1"><span class="counter" data-target="20"
+                            data-decimals="0">0</span>+ Yrs</p>
+                    <p class="text-xs uppercase font-bold text-slate-400 tracking-wider">Industry Experience</p>
+                </div>
+                <div class="p-4">
+                    <p class="text-3xl sm:text-4xl font-extrabold gold-text mb-1">$<span class="counter"
+                            data-target="166" data-decimals="0">0</span>M+</p>
+                    <p class="text-xs uppercase font-bold text-slate-400 tracking-wider">Transactions Background</p>
+                </div>
+                <div class="p-4 col-span-2 md:col-span-1">
+                    <p class="text-3xl sm:text-4xl font-extrabold gold-text mb-1"><span class="counter"
+                            data-target="100" data-decimals="0">0</span>%</p>
+                    <p class="text-xs uppercase font-bold text-slate-400 tracking-wider">Audit-Ready Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: STRAIGHT-LINE DEPRECIATION WARNING (Theme Refined) -->
+    <section id="about" class="py-20 bg-gradient-to-b from-[#081c12] to-[#0b2216] relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span
+                    class="inline-block bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3">
+                    The Costly Reality
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                    Straight-Line Depreciation Is Leaving Your Money on the Table.
+                </h2>
+                <p class="text-slate-300 mt-4 text-base leading-relaxed">
+                    Waiting 27.5 to 39 years to depreciate your property can delay deductions that may be available much
+                    sooner.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div
+                    class="bg-gradient-to-b from-[#123524] to-[#0b2216] p-6 rounded-2xl border border-amber-500/20 hover:border-amber-500/50 shadow-xl transition-all hover:-translate-y-1 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-2">Slow Depreciation Schedules</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">Waiting decades instead of accelerating
+                        eligible deductions into the early years of ownership.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-gradient-to-b from-[#123524] to-[#0b2216] p-6 rounded-2xl border border-amber-500/20 hover:border-amber-500/50 shadow-xl transition-all hover:-translate-y-1 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-2">Missed Bonus Depreciation</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">Failing to capture first-year
+                        deductions that may be available under current tax law.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-gradient-to-b from-[#123524] to-[#0b2216] p-6 rounded-2xl border border-amber-500/20 hover:border-amber-500/50 shadow-xl transition-all hover:-translate-y-1 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-user-xmark"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-2">Generalist Analysis</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">Tax expertise alone does not replace
+                        the detailed engineering analysis needed to classify building components.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="bg-gradient-to-b from-[#123524] to-[#0b2216] p-6 rounded-2xl border border-amber-500/20 hover:border-amber-500/50 shadow-xl transition-all hover:-translate-y-1 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-2">DIY Calculators</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">Online estimates cannot provide the
+                        component-level support required for an audit-defensible study.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div
+                    class="bg-gradient-to-b from-[#123524] to-[#0b2216] p-6 rounded-2xl border border-amber-500/20 hover:border-amber-500/50 shadow-xl transition-all hover:-translate-y-1 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-circle-exclamation"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-2">Incomplete Documentation</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">Missing the detailed asset schedules
+                        and supporting methodology expected in a quality cost segregation report.</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div
+                    class="bg-gradient-to-b from-[#123524] to-[#0b2216] p-6 rounded-2xl border border-amber-500/20 hover:border-amber-500/50 shadow-xl transition-all hover:-translate-y-1 group">
+                    <div
+                        class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-2">No Audit Support</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">A properly prepared study should
+                        include clear documentation and professional support if questions arise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: WHAT A STUDY DELIVERS (Theme Refined) -->
+    <section id="delivers" class="py-20 bg-[#081c12] border-t border-emerald-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span
+                    class="inline-block bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3">
+                    The Finished Deliverable
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">What a Study Delivers</h2>
+                <p class="text-slate-300 mt-3 text-base">A complete engineering-based analysis designed to give your CPA
+                    clear, usable, and well-supported depreciation schedules.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-8">
+                <!-- Deliverable 1 -->
+                <div
+                    class="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#0b2216] to-[#123524] border-l-4 border-amber-400 border-t border-r border-b border-emerald-900/50 flex items-start space-x-5 shadow-xl hover:border-amber-400 transition-all">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl shrink-0 border border-amber-500/20">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-xl mb-2">Component Reclassification</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">Identify eligible building
+                            components and reclassify them into shorter recovery periods to accelerate depreciation.</p>
+                    </div>
+                </div>
+
+                <!-- Deliverable 2 -->
+                <div
+                    class="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#0b2216] to-[#123524] border-l-4 border-amber-400 border-t border-r border-b border-emerald-900/50 flex items-start space-x-5 shadow-xl hover:border-amber-400 transition-all">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl shrink-0 border border-amber-500/20">
+                        <i class="fa-solid fa-magnifying-glass-dollar"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-xl mb-2">Look-Back Studies</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">Recover missed depreciation from
+                            prior years through the appropriate accounting-method adjustment process.</p>
+                    </div>
+                </div>
+
+                <!-- Deliverable 3 -->
+                <div
+                    class="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#0b2216] to-[#123524] border-l-4 border-amber-400 border-t border-r border-b border-emerald-900/50 flex items-start space-x-5 shadow-xl hover:border-amber-400 transition-all">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl shrink-0 border border-amber-500/20">
+                        <i class="fa-solid fa-file-circle-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-xl mb-2">Audit-Ready Documentation</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">Receive a detailed report with
+                            supporting methodology, asset schedules, and component-level findings.</p>
+                    </div>
+                </div>
+
+                <!-- Deliverable 4 -->
+                <div
+                    class="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#0b2216] to-[#123524] border-l-4 border-amber-400 border-t border-r border-b border-emerald-900/50 flex items-start space-x-5 shadow-xl hover:border-amber-400 transition-all">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl shrink-0 border border-amber-500/20">
+                        <i class="fa-solid fa-handshake-angle"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-xl mb-2">CPA-Ready Handoff</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">Provide your tax professional with
+                            organized schedules and documentation prepared for implementation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES SECTION (With Lightbox Integration) -->
+    <section id="case-studies" class="py-20 bg-[#0b2216] border-t border-emerald-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span
+                    class="inline-block bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3">
+                    Proven Real Estate Results
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Cost Segregation Case Studies</h2>
+                <p class="text-slate-300 mt-2 text-sm sm:text-base">Click any case study to view full detailed
+                    engineering breakdown in lightbox preview.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Case Study 1 -->
+                <div onclick="openLightbox('Commercial Retail Center', 'https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a7071a7188345b27eecf38c.png', 'Accelerated over 32% of total building basis into 5, 7, and 15-year tax recovery schedules.')"
+                    class="cursor-pointer bg-slate-900/80 rounded-2xl border border-emerald-800/40 overflow-hidden hover:border-amber-400 transition-all hover:scale-[1.02] shadow-2xl group">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a7071a7188345b27eecf38c.png"
+                            alt="Case Study 1"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-amber-400 text-3xl font-bold">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white text-lg mb-2">Commercial Retail Center</h3>
+                        <p class="text-xs text-slate-400">Click to preview complete engineering data breakdown.</p>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div onclick="openLightbox('Multi-Family Residential Complex', 'https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a700606a4c8a1a2c37bafd0.png', 'Identified first-year bonus depreciation savings exceeding $420,000 for investors.')"
+                    class="cursor-pointer bg-slate-900/80 rounded-2xl border border-emerald-800/40 overflow-hidden hover:border-amber-400 transition-all hover:scale-[1.02] shadow-2xl group">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a700606a4c8a1a2c37bafd0.png"
+                            alt="Case Study 2"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-amber-400 text-3xl font-bold">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white text-lg mb-2">Multi-Family Complex</h3>
+                        <p class="text-xs text-slate-400">Click to preview complete engineering data breakdown.</p>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div onclick="openLightbox('Industrial Warehousing Facility', 'https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a700601a4c8a1a2c37baf40.png', 'Reclassified specialized structural, electrical, and exterior site improvements.')"
+                    class="cursor-pointer bg-slate-900/80 rounded-2xl border border-emerald-800/40 overflow-hidden hover:border-amber-400 transition-all hover:scale-[1.02] shadow-2xl group">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a700601a4c8a1a2c37baf40.png"
+                            alt="Case Study 3"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-amber-400 text-3xl font-bold">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white text-lg mb-2">Industrial Facility</h3>
+                        <p class="text-xs text-slate-400">Click to preview complete engineering data breakdown.</p>
+                    </div>
+                </div>
+
+                <!-- Case Study 4 -->
+                <div onclick="openLightbox('Medical Office Building', 'https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a700600cf81b06f0559c38f.png', 'Full look-back study capturing 4 years of retroactive depreciation deductions.')"
+                    class="cursor-pointer bg-slate-900/80 rounded-2xl border border-emerald-800/40 overflow-hidden hover:border-amber-400 transition-all hover:scale-[1.02] shadow-2xl group">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a700600cf81b06f0559c38f.png"
+                            alt="Case Study 4"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-amber-400 text-3xl font-bold">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white text-lg mb-2">Medical Office Building</h3>
+                        <p class="text-xs text-slate-400">Click to preview complete engineering data breakdown.</p>
+                    </div>
+                </div>
+
+                <!-- Case Study 5 -->
+                <div onclick="openLightbox('Hotel & Hospitality Resort', 'https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a700601188345b27e082e9e.png', 'Maximising 5-year personal property component reclassifications.')"
+                    class="cursor-pointer bg-slate-900/80 rounded-2xl border border-emerald-800/40 overflow-hidden hover:border-amber-400 transition-all hover:scale-[1.02] shadow-2xl group">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a700601188345b27e082e9e.png"
+                            alt="Case Study 5"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-amber-400 text-3xl font-bold">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white text-lg mb-2">Hospitality Resort</h3>
+                        <p class="text-xs text-slate-400">Click to preview complete engineering data breakdown.</p>
+                    </div>
+                </div>
+
+                <!-- Case Study 6 -->
+                <div onclick="openLightbox('Mixed-Use Urban Property', 'https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a700601a4c8a1a2c37baf45.png', 'Comprehensive study engineered for seamless CPA implementation.')"
+                    class="cursor-pointer bg-slate-900/80 rounded-2xl border border-emerald-800/40 overflow-hidden hover:border-amber-400 transition-all hover:scale-[1.02] shadow-2xl group">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a700601a4c8a1a2c37baf45.png"
+                            alt="Case Study 6"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div
+                            class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-amber-400 text-3xl font-bold">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-white text-lg mb-2">Mixed-Use Urban Property</h3>
+                        <p class="text-xs text-slate-400">Click to preview complete engineering data breakdown.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM SECTION (100% Accurate Preserved Info) -->
+    <section id="team" class="py-20 bg-[#081c12] border-t border-emerald-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span
+                    class="inline-block bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3">
+                    Our Team
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Experienced People Behind Every Study</h2>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Team 1 -->
+                <div
+                    class="bg-[#0b2216] p-6 sm:p-8 rounded-3xl border border-emerald-800/40 shadow-2xl grid md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-4">
+                        <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a4d01fd55edb24b90be4d05.png"
+                            alt="Mark Prideaux"
+                            class="w-full h-80 object-cover rounded-2xl border-2 border-amber-500/30">
+                    </div>
+                    <div class="md:col-span-8 space-y-4">
+                        <h3 class="text-2xl font-bold text-white">Mark Prideaux</h3>
+                        <p class="text-amber-400 text-sm font-semibold uppercase tracking-wider">President & Senior Cost
+                            Segregation Engineer</p>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            Mark Prideaux has been performing cost segregation studies for more than 20 years, bringing
+                            a rare combination of cost segregation, construction, real estate, investment property, and
+                            brokerage experience to the work behind TaxDepPro. Before and during his cost segregation
+                            career, Mark built a broad foundation in real estate and construction. His background
+                            includes owning an award-winning construction company for 14 years, working as a general
+                            contractor on new homes and major additions, performing estimating and sales for residential
+                            and commercial contractors, and completing extensive investment property renovation over the
+                            years.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team 2 -->
+                <div
+                    class="bg-[#0b2216] p-6 sm:p-8 rounded-3xl border border-emerald-800/40 shadow-2xl grid md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-4">
+                        <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a4d01fdb7dbcd414923af31.jpg"
+                            alt="Hank Tippins"
+                            class="w-full h-80 object-cover rounded-2xl border-2 border-amber-500/30">
+                    </div>
+                    <div class="md:col-span-8 space-y-4">
+                        <h3 class="text-2xl font-bold text-white">Hank Tippins</h3>
+                        <p class="text-amber-400 text-sm font-semibold uppercase tracking-wider">Chief Engineer</p>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            Hank Tippins serves as Chief Engineer for TaxDepPro, bringing a strong technical foundation
+                            in engineering, real estate, cost segregation, and investment property ownership. Hank holds
+                            a Bachelor's degree in Mechanical Engineering and a Master's degree in Industrial
+                            Engineering. This background gives him a disciplined, analytical approach to evaluating
+                            buildings, construction systems, property components, and depreciation opportunities.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team 3 -->
+                <div
+                    class="bg-[#0b2216] p-6 sm:p-8 rounded-3xl border border-emerald-800/40 shadow-2xl grid md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-4">
+                        <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a4d01fd2d9cf80515ea00b5.png"
+                            alt="Alessandra Tippins"
+                            class="w-full h-80 object-cover rounded-2xl border-2 border-amber-500/30">
+                    </div>
+                    <div class="md:col-span-8 space-y-4">
+                        <h3 class="text-2xl font-bold text-white">Alessandra Tippins</h3>
+                        <p class="text-amber-400 text-sm font-semibold uppercase tracking-wider">Creative Operations
+                            Specialist</p>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            Alessandra Tippins plays an integral role in supporting the marketing, digital
+                            communications, and creative operations behind TaxDepPro. Her work helps ensure that
+                            TaxDepPro presents complex cost segregation concepts in a way that is clear, professional,
+                            and easy for property owners, investors, and tax professionals to understand.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Team 4 -->
+                <div
+                    class="bg-[#0b2216] p-6 sm:p-8 rounded-3xl border border-emerald-800/40 shadow-2xl grid md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-4">
+                        <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a679c039eb8e1b1cc2bbaf5.jpg"
+                            alt="David Simmons"
+                            class="w-full h-80 object-cover rounded-2xl border-2 border-amber-500/30">
+                    </div>
+                    <div class="md:col-span-8 space-y-4">
+                        <h3 class="text-2xl font-bold text-white">David Simmons</h3>
+                        <p class="text-amber-400 text-sm font-semibold uppercase tracking-wider">Senior Director of Cost
+                            Segregation & Development Strategy</p>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            David Simmons serves as Senior Director of Cost Segregation and Development Strategy for
+                            TaxDepPro. He specializes in helping property owners, developers, investors, and project
+                            teams integrate cost segregation considerations into new construction, design-build,
+                            commercial acquisition, renovation, and capital improvement strategies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW BLOG SECTION -->
+    <section id="blog" class="py-20 bg-[#0b2216] border-t border-emerald-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span
+                    class="inline-block bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3">
+                    Tax Strategy & Knowledge
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Latest Cost Segregation Insights</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <article
+                    class="bg-[#081c12] rounded-2xl border border-emerald-800/40 p-6 shadow-xl space-y-4 hover:border-amber-400 transition-all">
+                    <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Tax Law Update</span>
+                    <h3 class="font-bold text-white text-lg leading-snug">Understanding Bonus Depreciation Rules for
+                        Commercial Real Estate</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Learn how recent tax policy changes impact your
+                        immediate first-year tax write-off potential.</p>
+                </article>
+                <article
+                    class="bg-[#081c12] rounded-2xl border border-emerald-800/40 p-6 shadow-xl space-y-4 hover:border-amber-400 transition-all">
+                    <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Investor Strategy</span>
+                    <h3 class="font-bold text-white text-lg leading-snug">How Look-Back Studies Recover Missed
+                        Depreciation Cash</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Discover how property owners can claim retroactive
+                        tax write-offs without amending tax returns.</p>
+                </article>
+                <article
+                    class="bg-[#081c12] rounded-2xl border border-emerald-800/40 p-6 shadow-xl space-y-4 hover:border-amber-400 transition-all">
+                    <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">CPA Guide</span>
+                    <h3 class="font-bold text-white text-lg leading-snug">Engineering vs Generalist Cost Segregation
+                        Studies</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Why IRS audit guidelines explicitly favor
+                        engineering-based methodologies over automated calculators.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENT REVIEWS SLIDER SECTION -->
+    <section id="reviews" class="py-20 bg-[#081c12] border-t border-emerald-900/30 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span
+                    class="inline-block bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3">
+                    Client Satisfaction
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Trusted Nationwide</h2>
+            </div>
+
+            <!-- Slider Carousel -->
+            <div class="relative max-w-4xl mx-auto">
+                <div
+                    class="overflow-hidden rounded-3xl bg-[#0b2216] border border-emerald-800/40 p-8 sm:p-12 shadow-2xl">
+                    <div id="reviews-track" class="flex transition-transform duration-500 ease-out">
+                        <div class="w-full shrink-0 space-y-4">
+                            <div class="text-amber-400 text-xl"><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p class="text-slate-200 text-base sm:text-lg italic leading-relaxed">"TaxDepPro found
+                                $420,000 in accelerated depreciation on a medical office building we purchased last
+                                year. The report was incredibly detailed and our CPA filed it without a single issue."
+                            </p>
+                            <h4 class="font-bold text-amber-400 text-sm">David M. — <span
+                                    class="text-slate-400 font-normal">Commercial Real Estate Investor</span></h4>
+                        </div>
+                        <div class="w-full shrink-0 space-y-4">
+                            <div class="text-amber-400 text-xl"><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p class="text-slate-200 text-base sm:text-lg italic leading-relaxed">"As a CPA, I know the
+                                limits of my license. I bring Mark and his team in for all my clients with significant
+                                real estate holdings. Their engineering approach is bulletproof."</p>
+                            <h4 class="font-bold text-amber-400 text-sm">Jennifer R. — <span
+                                    class="text-slate-400 font-normal">CPA, Managing Partner</span></h4>
+                        </div>
+                        <div class="w-full shrink-0 space-y-4">
+                            <div class="text-amber-400 text-xl"><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <p class="text-slate-200 text-base sm:text-lg italic leading-relaxed">"We did a look-back
+                                study on a multi-family property we've owned for 4 years. The catch-up deduction wiped
+                                out our tax liability for the year. Incredible ROI."</p>
+                            <h4 class="font-bold text-amber-400 text-sm">Michael T. — <span
+                                    class="text-slate-400 font-normal">Multi-Family Operator</span></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <div class="flex justify-center space-x-4 mt-6">
+                    <button id="slide-prev"
+                        class="w-12 h-12 rounded-full bg-emerald-900/50 border border-amber-500/30 text-amber-400 flex items-center justify-center hover:bg-amber-400 hover:text-slate-950 transition-colors">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button id="slide-next"
+                        class="w-12 h-12 rounded-full bg-emerald-900/50 border border-amber-500/30 text-amber-400 flex items-center justify-center hover:bg-amber-400 hover:text-slate-950 transition-colors">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-20 bg-[#0b2216] border-t border-emerald-900/30">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-white">Frequently Asked Questions</h2>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-[#081c12] rounded-xl border border-emerald-800/40 p-5">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center text-left font-bold text-white text-base">
+                        <span>What is a cost segregation study?</span>
+                        <i class="fa-solid fa-chevron-down text-amber-400 transition-transform"></i>
+                    </button>
+                    <div
+                        class="hidden mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-emerald-900/40 pt-3">
+                        A cost segregation study is an engineering-based tax strategy that accelerates depreciation
+                        deductions by reclassifying real estate building components into shorter 5, 7, or 15-year tax
+                        schedules.
+                    </div>
+                </div>
+                <div class="bg-[#081c12] rounded-xl border border-emerald-800/40 p-5">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center text-left font-bold text-white text-base">
+                        <span>Can I perform a cost segregation study on a property purchased years ago?</span>
+                        <i class="fa-solid fa-chevron-down text-amber-400 transition-transform"></i>
+                    </button>
+                    <div
+                        class="hidden mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-emerald-900/40 pt-3">
+                        Yes! Through an IRS look-back study, property owners can claim missed depreciation from prior
+                        years without amending tax returns using IRS Form 3115.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-emerald-900/50 py-12 text-slate-400 text-xs text-center">
+        <div class="max-w-7xl mx-auto px-4 space-y-4">
+            <img src="https://assets.cdn.filesafe.space/UvpjOzTMcCsLkDEN27Lt/media/6a6f238832db2dd157e40fd3.png"
+                alt="TaxDepPro" class="h-10 mx-auto">
+            <p>&copy; <span id="year"></span> TaxDepPro. All Rights Reserved. Engineering-Based Cost Segregation
+                Experts.</p>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX MODAL FOR CASE STUDIES -->
+    <div id="lightbox-modal"
+        class="fixed inset-0 z-50 bg-slate-950/90 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4">
+        <div
+            class="bg-[#0b2216] border border-amber-500/40 max-w-3xl w-full rounded-3xl p-6 sm:p-8 relative shadow-2xl space-y-4">
+            <button onclick="closeLightbox()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 id="lightbox-title" class="text-xl sm:text-2xl font-bold text-white"></h3>
+            <div class="max-h-[60vh] overflow-hidden rounded-xl border border-emerald-800">
+                <img id="lightbox-img" src="" alt="Case Study Detail" class="w-full h-full object-contain">
+            </div>
+            <p id="lightbox-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed"></p>
+        </div>
+    </div>
+
+    <!-- FLOATING ANIMATED WHATSAPP BUTTON -->
+    <a href="https://wa.me/01820876707" target="_blank"
+        class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform animate-bounce">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- FLOATING BACK TO TOP BUTTON -->
+    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+        class="fixed bottom-24 right-6 z-40 bg-slate-800 border border-amber-500/40 text-amber-400 w-12 h-12 rounded-full hidden flex items-center justify-center text-xl shadow-xl hover:bg-amber-400 hover:text-slate-950 transition-all">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- SCRIPTS -->
+    <script>
+        // 1. Dynamic Year
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // 2. Solid Header Scroll (No white shift or gap)
+        const mainHeader = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (mainHeader) {
+                if (window.scrollY > 30) {
+                    mainHeader.classList.add('shadow-2xl', 'py-1');
+                } else {
+                    mainHeader.classList.remove('shadow-2xl', 'py-1');
+                }
+            }
+        });
+
+        // 3. Mobile Navigation Drawer
+        const drawerToggleBtn = document.getElementById('drawer-toggle-btn');
+        const drawerCloseBtn = document.getElementById('drawer-close-btn');
+        const sidebarDrawer = document.getElementById('sidebar-drawer');
+        const drawerBackdrop = document.getElementById('drawer-backdrop');
+        const drawerLinks = document.querySelectorAll('.drawer-link');
+
+        function openDrawer() {
+            if (sidebarDrawer && drawerBackdrop) {
+                sidebarDrawer.classList.remove('translate-x-full');
+                drawerBackdrop.classList.remove('hidden');
+                setTimeout(() => drawerBackdrop.classList.remove('opacity-0'), 10);
+                document.body.classList.add('overflow-hidden');
+            }
+        }
+
+        function closeDrawer() {
+            if (sidebarDrawer && drawerBackdrop) {
+                sidebarDrawer.classList.add('translate-x-full');
+                drawerBackdrop.classList.add('opacity-0');
+                setTimeout(() => {
+                    drawerBackdrop.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                }, 300);
+            }
+        }
+
+        if (drawerToggleBtn) drawerToggleBtn.addEventListener('click', openDrawer);
+        if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeDrawer);
+        if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
+        drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
+
+        // 4. Back To Top Visibility
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (backToTopBtn) {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.remove('hidden');
+                } else {
+                    backToTopBtn.classList.add('hidden');
+                }
+            }
+        });
+
+        // 5. Lightbox Modal
+        function openLightbox(title, imgUrl, desc) {
+            document.getElementById('lightbox-title').textContent = title;
+            document.getElementById('lightbox-img').src = imgUrl;
+            document.getElementById('lightbox-desc').textContent = desc;
+            const modal = document.getElementById('lightbox-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            }
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            if (modal) {
+                modal.classList.add('opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+        }
+
+        // 6. Testimonial Slider
+        const track = document.getElementById('reviews-track');
+        const prevBtn = document.getElementById('slide-prev');
+        const nextBtn = document.getElementById('slide-next');
+        let currentSlide = 0;
+
+        function updateSlider() {
+            if (track && track.children.length > 0) {
+                const slideWidth = track.children[0].getBoundingClientRect().width;
+                track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+            }
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                if (track && currentSlide < track.children.length - 1) {
+                    currentSlide++;
+                } else {
+                    currentSlide = 0;
+                }
+                updateSlider();
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                if (track && currentSlide > 0) {
+                    currentSlide--;
+                } else if (track) {
+                    currentSlide = track.children.length - 1;
+                }
+                updateSlider();
+            });
+        }
+
+        window.addEventListener('resize', updateSlider);
+
+        // 7. Counter Up Effect
+        const counters = document.querySelectorAll('.counter');
+        function runCounters() {
+            const scrollPos = window.scrollY + window.innerHeight;
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const decimals = parseInt(counter.getAttribute('data-decimals') || '0');
+                if (!counter.getAttribute('data-done') && scrollPos > counter.offsetTop) {
+                    counter.setAttribute('data-done', 'true');
+                    let start = 0;
+                    const duration = 1500;
+                    const stepTime = 20;
+                    const steps = duration / stepTime;
+                    const increment = target / steps;
+
+                    const timer = setInterval(() => {
+                        start += increment;
+                        if (start >= target) {
+                            counter.textContent = target.toFixed(decimals);
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = start.toFixed(decimals);
+                        }
+                    }, stepTime);
+                }
+            });
+        }
+        window.addEventListener('scroll', runCounters);
+        runCounters();
+
+        // 8. FAQ Toggles
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                if (content) content.classList.toggle('hidden');
+                if (icon) icon.classList.toggle('rotate-180');
+            });
+        });
+    </script>
+</body>
+
+</html>
